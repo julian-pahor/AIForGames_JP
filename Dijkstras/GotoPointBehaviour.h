@@ -5,8 +5,7 @@
 
 namespace AIForGames
 {
-	class GotoPointBehaviour :
-		public Behaviour
+	class GotoPointBehaviour : public Behaviour
 	{
 		virtual void Update(Agent* agent, float deltaTime);
 	};

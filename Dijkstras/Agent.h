@@ -3,10 +3,11 @@
 #include "raylib.h"
 #include "PathAgent.h"
 
-class Behaviour;
 
 namespace AIForGames
 {
+    class Behaviour;
+
     class Agent
 
     {
@@ -17,6 +18,9 @@ namespace AIForGames
 
         void Update(float deltaTime);
         void GoTo(glm::vec2 point);
+        void SetNode(Node* node);
+        void SetNode(glm::vec2 point);
+        void SetSpeed(float speed);
         void Draw();
 
     private:

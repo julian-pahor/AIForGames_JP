@@ -35,8 +35,9 @@ int main()
     Node* end = nodeMap.GetNode(10, 2);
     
 
-    
-    
+    Agent agent(&nodeMap, new GotoPointBehaviour());
+    agent.SetNode(start);
+    agent.SetSpeed(32);
 
     Color lineColor = { 255, 255, 255, 255 };
 
@@ -52,6 +53,9 @@ int main()
         ClearBackground(BLACK);
 
         nodeMap.Draw();
+
+        agent.Update(GetFrameTime());
+        agent.Draw();
 
         EndDrawing();
     }

@@ -18,6 +18,22 @@ namespace AIForGames
         m_pathAgent.GoToNode(end);
     }
 
+    void Agent::SetNode(Node* node)
+    {
+        m_pathAgent.SetNode(node);
+    }
+
+    void Agent::SetNode(glm::vec2 point)
+    {
+        Node* node = m_nodeMap->GetClosestNode(point);
+        m_pathAgent.SetNode(node);
+    }
+
+    void Agent::SetSpeed(float speed)
+    {
+        m_pathAgent.SetSpeed(speed);
+    }
+
     void Agent::Draw()
     {
         m_pathAgent.Draw();

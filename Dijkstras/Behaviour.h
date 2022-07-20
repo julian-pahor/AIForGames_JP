@@ -1,9 +1,9 @@
 #pragma once
 
-class Agent;
-
 namespace AIForGames
 {
+	class Agent;
+
 	class Behaviour
 	{
 	public:

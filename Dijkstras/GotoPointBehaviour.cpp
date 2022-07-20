@@ -13,8 +13,9 @@ namespace AIForGames
         if (IsMouseButtonPressed(0))
         {
             Vector2 mousePos = GetMousePosition();
-            agent->GoTo(glm::vec2(mousePos.x, mousePos.y));
+            agent->SetNode(glm::vec2(mousePos.x, mousePos.y));
         }
+
         if (IsMouseButtonPressed(1))
         {
             Vector2 mousePos = GetMousePosition();

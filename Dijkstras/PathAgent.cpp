@@ -41,7 +41,7 @@ namespace AIForGames
 
             if (m_currentIndex == m_path.size())
             {
-                
+                m_position = m_path[m_currentIndex-1]->position;
                 m_path.clear();
             }
             else
@@ -64,7 +64,6 @@ namespace AIForGames
     void PathAgent::Draw()
     {
         DrawCircleGradient((m_position.x + 0.5f) * 30, (m_position.y + 0.5f) * 30, 10, RED, BLUE);
-        //std::cout << m_position.x << "And" << m_position.y << std::endl;
     }
 }
 

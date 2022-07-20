@@ -42,7 +42,7 @@ namespace AIForGames
             if (m_currentIndex == m_path.size())
             {
                 m_position = m_path[m_currentIndex-1]->position;
-                m_currentNode = m_path[m_currentIndex];
+                m_currentNode = m_path[m_currentIndex - 1];
                 m_path.clear();
             }
             else

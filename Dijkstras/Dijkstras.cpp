@@ -83,7 +83,6 @@ int main()
         BeginDrawing();
         ClearBackground(BLACK);
 
-
         nodeMap.Draw();
         agent.Update(GetFrameTime());
         agent.Draw();

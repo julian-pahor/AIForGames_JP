@@ -25,7 +25,8 @@ namespace AIForGames
         void SetSpeed(float speed) { m_speed = speed; }
         void Update(float deltaTime);
         void GoToNode(Node* node);
-        void Draw();
+        void Draw(Color color);
+        void ClearPath();
         std::vector<Node*> GetPath();
     };
 }

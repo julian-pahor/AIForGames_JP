@@ -5,6 +5,7 @@
 #include "Agent.h"
 #include "WanderBehaviour.h"
 #include "FollowBehaviour.h"
+#include "SelectorBehaviour.h"
 
 #include <glm/glm.hpp>
 #include <vector>
@@ -45,20 +46,30 @@ int main()
 
     Agent agent(&nodeMap, new GotoPointBehaviour());
     agent.SetNode(nodeMap.GetRandomNode());
+    agent.SetColor(RED);
     agent.SetSpeed(16);
 
     Agent agent2(&nodeMap, new WanderBehaviour());
     agent2.SetNode(nodeMap.GetRandomNode());
+    agent2.SetColor(PURPLE);
     agent2.SetSpeed(4);
 
     Agent agent3(&nodeMap, new WanderBehaviour());
     agent3.SetNode(nodeMap.GetRandomNode());
+    agent3.SetColor(PURPLE);
     agent3.SetSpeed(2);
 
     Agent agent4(&nodeMap, new FollowBehaviour());
     agent4.SetNode(nodeMap.GetRandomNode());
+    agent4.SetColor(SKYBLUE);
     agent4.SetSpeed(4);
     agent4.SetTarget(&agent);
+
+    Agent agent5(&nodeMap, new SelectorBehaviour(new FollowBehaviour(), new WanderBehaviour()));
+    agent5.SetNode(nodeMap.GetRandomNode());
+    agent5.SetSpeed(3);
+    agent5.SetTarget(&agent);
+    
 
     InitWindow(1500, 600, "Djikstras!");
 
@@ -81,6 +92,9 @@ int main()
 
         agent4.Update(GetFrameTime());
         agent4.Draw();
+
+        agent5.Update(GetFrameTime());
+        agent5.Draw();
 
         EndDrawing();
     }

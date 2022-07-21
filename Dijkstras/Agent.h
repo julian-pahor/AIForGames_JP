@@ -17,6 +17,7 @@ namespace AIForGames
         ~Agent() { delete m_current; }
 
         void Update(float deltaTime);
+        void SetColor(Color color) { m_color = color; }
         void GoTo(glm::vec2 point);
         void GoTo(Node* node);
         void SetNode(Node* node);
@@ -24,11 +25,14 @@ namespace AIForGames
         void SetSpeed(float speed);
         void Draw();
         bool PathComplete();
+        
 
         NodeMap* GetNodeMap();
         Agent* GetTarget();
         void SetTarget(Agent* agent);
         PathAgent GetPathAgent();
+
+        void ResetPath();
         
 
     private:

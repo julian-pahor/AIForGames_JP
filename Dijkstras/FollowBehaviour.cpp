@@ -14,7 +14,7 @@ namespace AIForGames
 
         float dist = glm::distance(target->GetPathAgent().GetPosition(), m_lastTargetPosition);
         float cellSize = agent->GetNodeMap()->GetCellSize();
-        if (dist > 1)
+        if (dist > 1) //1 value represents 1 grid 
         {
             m_lastTargetPosition = target->GetPathAgent().GetPosition();
             glm::vec2 gPos = m_lastTargetPosition;

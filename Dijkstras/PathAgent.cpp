@@ -76,10 +76,17 @@ namespace AIForGames
         m_currentIndex = 1;
     }
 
-    void PathAgent::Draw()
+    void PathAgent::Draw(Color color)
     {
-        DrawCircleGradient((m_position.x + 0.5f) * 30, (m_position.y + 0.5f) * 30, 10, RED, BLUE);
+        DrawCircle((m_position.x + 0.5f) * 30, (m_position.y + 0.5f) * 30, 10, color);
     }
+
+    
+    void PathAgent::ClearPath()
+    {
+        m_path.clear();
+    }
+
     std::vector<Node*> PathAgent::GetPath()
     {
         return m_path;

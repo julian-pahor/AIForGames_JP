@@ -41,7 +41,7 @@ namespace AIForGames
 
     void Agent::Draw()
     {
-        m_pathAgent.Draw();
+        m_pathAgent.Draw(m_color);
     }
     bool Agent::PathComplete()
     {
@@ -64,6 +64,11 @@ namespace AIForGames
     PathAgent Agent::GetPathAgent()
     {
         return m_pathAgent;
+    }
+
+    void Agent::ResetPath()
+    {
+        m_pathAgent.ClearPath();
     }
 
     

@@ -9,6 +9,7 @@ namespace AIForGames
 	{
 	public:
 
+		void Enter(Agent* agent) override;
 		void Update(Agent* agent, float deltaTime) override;
 
 	private:

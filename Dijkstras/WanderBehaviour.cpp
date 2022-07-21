@@ -11,5 +11,10 @@ namespace AIForGames
 			agent->GoTo(agent->GetNodeMap()->GetRandomNode());
 		}
 	}
+	void WanderBehaviour::Enter(Agent* agent)
+	{
+		agent->SetColor(PURPLE);
+		
+	}
 }
 

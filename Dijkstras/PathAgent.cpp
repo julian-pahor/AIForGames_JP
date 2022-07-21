@@ -79,6 +79,19 @@ namespace AIForGames
     void PathAgent::Draw(Color color)
     {
         DrawCircle((m_position.x + 0.5f) * 30, (m_position.y + 0.5f) * 30, 10, color);
+
+        if (m_path.size() > 1)
+        {
+            for (int i = 0; i < m_path.size() - 1; i++)
+            {
+                DrawLine((m_path[i]->position.x + 0.5f) * 30,
+                    (m_path[i]->position.y + 0.5f) * 30,
+                    (m_path[i + 1]->position.x + 0.5f) * 30,
+                    (m_path[i + 1]->position.y + 0.5f) * 30,
+                    YELLOW);
+            }
+        }
+
     }
 
     

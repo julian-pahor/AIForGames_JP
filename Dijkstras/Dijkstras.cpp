@@ -7,6 +7,11 @@
 #include "FollowBehaviour.h"
 #include "SelectorBehaviour.h"
 
+#include "FiniteStateMachine.h"
+#include "Condition.h"
+#include "State.h"
+#include "DistanceCondition.h"
+
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
@@ -47,16 +52,32 @@ int main()
 
     nodeMap.Initialise(asciiMap, 30);
 
+    //set up a FSM, we're going to have two states with their own conditions
+    DistanceCondition* closerThan5 = new DistanceCondition(5.0f, true);
+    DistanceCondition* furtherThan7 = new DistanceCondition(7.0f, false);
+
+    //register these states with the FSM, so it's responsible for deleting them now
+    State* wanderState = new State(new WanderBehaviour());
+    State* followState = new State(new FollowBehaviour());
+    wanderState->AddTransition(closerThan5, followState);
+    followState->AddTransition(furtherThan7, wanderState);
+
+    //make a FSM that starts off wandering
+    FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
+    fsm->AddState(wanderState);
+    fsm->AddState(followState);
+
     Agent agent(&nodeMap, new GotoPointBehaviour());
     agent.SetNode(nodeMap.GetRandomNode());
-    agent.SetColor(RED);
+    agent.SetColor(GOLD);
     agent.SetSpeed(16);
 
-    Agent agent2(&nodeMap, new WanderBehaviour());
+    Agent agent2(&nodeMap, fsm);
     agent2.SetNode(nodeMap.GetRandomNode());
-    agent2.SetColor(PURPLE);
     agent2.SetSpeed(4);
+    agent2.SetTarget(&agent);
 
+    /*
     Agent agent3(&nodeMap, new WanderBehaviour());
     agent3.SetNode(nodeMap.GetRandomNode());
     agent3.SetColor(PURPLE);
@@ -71,13 +92,13 @@ int main()
     Agent agent5(&nodeMap, new SelectorBehaviour(new FollowBehaviour(), new WanderBehaviour()));
     agent5.SetNode(nodeMap.GetRandomNode());
     agent5.SetSpeed(3);
-    agent5.SetTarget(&agent);
+    agent5.SetTarget(&agent);*/
     
     agentBag.push_back(&agent);
     agentBag.push_back(&agent2);
-    agentBag.push_back(&agent3);
+    /*agentBag.push_back(&agent3);
     agentBag.push_back(&agent4);
-    agentBag.push_back(&agent5);
+    agentBag.push_back(&agent5);*/
 
     InitWindow(1500, 600, "Djikstras!");
 

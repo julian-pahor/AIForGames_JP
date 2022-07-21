@@ -186,14 +186,14 @@ namespace AIForGames
                 else
                 {
                     // draw the connections between the node and its neighbours
-                    for (int i = 0; i < node->connections.size(); i++)
+                    /*for (int i = 0; i < node->connections.size(); i++)
                     {
                         Node* other = node->connections[i].target;
                         DrawLine((x + 0.5f) * m_cellSize, (y + 0.5f) * m_cellSize,
                             (other->position.x + 0.5f) * m_cellSize,
                             (other->position.y + 0.5f) * m_cellSize,
                             lineColor);
-                    }
+                    }*/
                 }
             }
         }

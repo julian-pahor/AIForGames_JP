@@ -7,7 +7,7 @@ namespace AIForGames
     void FollowBehaviour::Enter(Agent* agent)
     {
         agent->SetColor(RED);
-        agent->ResetPath();
+        //agent->ResetPath();
     }
 
     void FollowBehaviour::Update(Agent* agent, float deltaTime)

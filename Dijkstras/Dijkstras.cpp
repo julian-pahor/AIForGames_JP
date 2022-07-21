@@ -13,6 +13,7 @@
 #include <list>
 #include <algorithm>
 #include <iostream>
+#include <list>
 
 using namespace AIForGames;
 
@@ -21,6 +22,8 @@ using namespace AIForGames;
 int main()
 {
     NodeMap nodeMap;
+
+    std::list<Agent*> agentBag;
 
     std::vector<std::string> asciiMap;
     asciiMap.push_back("0000000000000000000000000000");
@@ -70,6 +73,11 @@ int main()
     agent5.SetSpeed(3);
     agent5.SetTarget(&agent);
     
+    agentBag.push_back(&agent);
+    agentBag.push_back(&agent2);
+    agentBag.push_back(&agent3);
+    agentBag.push_back(&agent4);
+    agentBag.push_back(&agent5);
 
     InitWindow(1500, 600, "Djikstras!");
 
@@ -81,7 +89,7 @@ int main()
 
         nodeMap.Draw();
 
-        agent.Update(GetFrameTime());
+        /*agent.Update(GetFrameTime());
         agent.Draw();
 
         agent2.Update(GetFrameTime());
@@ -94,7 +102,13 @@ int main()
         agent4.Draw();
 
         agent5.Update(GetFrameTime());
-        agent5.Draw();
+        agent5.Draw();*/
+
+        for (Agent* a : agentBag)
+        {
+            a->Update(GetFrameTime());
+            a->Draw();
+        }
 
         EndDrawing();
     }

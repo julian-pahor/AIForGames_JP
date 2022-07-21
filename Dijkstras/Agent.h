@@ -28,7 +28,7 @@ namespace AIForGames
         NodeMap* GetNodeMap();
         Agent* GetTarget();
         void SetTarget(Agent* agent);
-        glm::vec2 GetPosition();
+        PathAgent GetPathAgent();
         
 
     private:

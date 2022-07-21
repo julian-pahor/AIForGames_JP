@@ -46,7 +46,10 @@ namespace AIForGames
         }
         else
         {
+            m_currentNode = m_path[m_currentIndex];
+
             m_currentIndex++;
+            
 
             if (m_currentIndex == m_path.size())
             {
@@ -56,6 +59,8 @@ namespace AIForGames
             }
             else
             {
+                
+
                 distance *= -1; //inverse the direction back to a positive value
 
                 direction = glm::normalize(m_position - nodeWV);

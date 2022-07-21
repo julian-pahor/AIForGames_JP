@@ -10,6 +10,7 @@ namespace AIForGames
     class PathAgent
     {
     private:
+
         glm::vec2 m_position;
 
         std::vector<Node*> m_path;

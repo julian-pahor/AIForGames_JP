@@ -61,9 +61,11 @@ namespace AIForGames
         m_targetAgent = agent;
     }
 
-    glm::vec2 Agent::GetPosition()
+    PathAgent Agent::GetPathAgent()
     {
-        return m_pathAgent.GetPosition();
+        return m_pathAgent;
     }
+
+    
     
 }

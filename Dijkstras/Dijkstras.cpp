@@ -43,7 +43,6 @@ int main()
 
     nodeMap.Initialise(asciiMap, 30);
 
-
     Agent agent(&nodeMap, new GotoPointBehaviour());
     agent.SetNode(nodeMap.GetRandomNode());
     agent.SetSpeed(16);
@@ -61,11 +60,7 @@ int main()
     agent4.SetSpeed(4);
     agent4.SetTarget(&agent);
 
-
-
     InitWindow(1500, 600, "Djikstras!");
-
-
 
     while (!WindowShouldClose())
     {

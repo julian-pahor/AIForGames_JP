@@ -142,9 +142,11 @@
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="Dijkstras.cpp" />
+    <ClCompile Include="FollowBehaviour.cpp" />
     <ClCompile Include="GotoPointBehaviour.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="Pathfinding.cpp" />
+    <ClCompile Include="WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -152,9 +154,11 @@
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Behaviour.h" />
+    <ClInclude Include="FollowBehaviour.h" />
     <ClInclude Include="GotoPointBehaviour.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="Pathfinding.h" />
+    <ClInclude Include="WanderBehaviour.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

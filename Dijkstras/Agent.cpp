@@ -18,6 +18,11 @@ namespace AIForGames
         m_pathAgent.GoToNode(end);
     }
 
+    void Agent::GoTo(Node* node)
+    {
+        m_pathAgent.GoToNode(node);
+    }
+
     void Agent::SetNode(Node* node)
     {
         m_pathAgent.SetNode(node);
@@ -38,4 +43,27 @@ namespace AIForGames
     {
         m_pathAgent.Draw();
     }
+    bool Agent::PathComplete()
+    {
+        return m_pathAgent.GetPath().empty();
+    }
+    NodeMap* Agent::GetNodeMap()
+    {
+        return m_nodeMap;
+    }
+    Agent* Agent::GetTarget()
+    {
+        return m_targetAgent;
+    }
+
+    void Agent::SetTarget(Agent* agent)
+    {
+        m_targetAgent = agent;
+    }
+
+    glm::vec2 Agent::GetPosition()
+    {
+        return m_pathAgent.GetPosition();
+    }
+    
 }

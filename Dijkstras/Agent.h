@@ -18,12 +18,21 @@ namespace AIForGames
 
         void Update(float deltaTime);
         void GoTo(glm::vec2 point);
+        void GoTo(Node* node);
         void SetNode(Node* node);
         void SetNode(glm::vec2 point);
         void SetSpeed(float speed);
         void Draw();
+        bool PathComplete();
+
+        NodeMap* GetNodeMap();
+        Agent* GetTarget();
+        void SetTarget(Agent* agent);
+        glm::vec2 GetPosition();
+        
 
     private:
+        Agent* m_targetAgent = nullptr;
         PathAgent m_pathAgent;
         Behaviour* m_current;
         NodeMap* m_nodeMap;

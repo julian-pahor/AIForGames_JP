@@ -1,17 +1,20 @@
 #pragma once
 #include "Behaviour.h"
-
-
+#include "raylib.h"
+#include "glm/glm.hpp"
 
 namespace AIForGames
 {
-	class GotoPointBehaviour : public Behaviour
-
+	class FollowBehaviour : public Behaviour
 	{
 	public:
 
 		void Update(Agent* agent, float deltaTime) override;
+
+	private:
+		glm::vec2 m_lastTargetPosition;
 	};
 }
+
 
 

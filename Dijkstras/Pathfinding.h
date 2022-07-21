@@ -33,6 +33,8 @@ namespace AIForGames
 
     class NodeMap
     {
+    private:
+
         int m_width, m_height;
         float m_cellSize;
 
@@ -45,6 +47,8 @@ namespace AIForGames
             if (m_nodes) delete[] m_nodes;
         }
 
+        Node* GetRandomNode();
+
         static std::vector<Node*> DijkstrasSearch(Node* startNode, Node* endNode);
 
         void Initialise(std::vector<std::string> asciiMap, int cellSize);
@@ -54,6 +58,8 @@ namespace AIForGames
         void Draw();
 
         Node* GetClosestNode(glm::vec2 worldPos);
+
+        float GetCellSize();
 
     };
 }

@@ -11,9 +11,28 @@ namespace AIForGames
         return (first->gScore < second->gScore);
     }
 
+    Node* NodeMap::GetRandomNode()
+    {
+        Node* node = nullptr;
+
+        while (node == nullptr)
+        {
+            int x = GetRandomValue(0, 1000) % m_width;
+            int y = GetRandomValue(0, 1000) % m_height;
+            node = GetNode(x, y);
+        }
+
+        return node;
+    }
+
     std::vector<Node*> NodeMap::DijkstrasSearch(Node* startNode, Node* endNode)
     {
         std::vector<Node*> dPath;
+
+        if (endNode == nullptr)
+        {
+            return dPath;
+        }
 
         if (startNode == nullptr || endNode == nullptr)
         {
@@ -195,6 +214,10 @@ namespace AIForGames
         if (j < 0 || j >= m_height) return nullptr;
 
         return GetNode(i, j);
+    }
+    float NodeMap::GetCellSize()
+    {
+        return m_cellSize;
     }
 }
 

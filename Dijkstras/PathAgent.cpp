@@ -3,8 +3,17 @@
 
 namespace AIForGames
 {
+    glm::vec2 PathAgent::GetPosition()
+    {
+        return m_position;
+    }
     void PathAgent::SetNode(Node* node)
     {
+        if (node == nullptr)
+        {
+            return;
+        }
+
         m_currentNode = node;
         m_position.x = node->position.x;
         m_position.y = node->position.y;
@@ -65,6 +74,10 @@ namespace AIForGames
     void PathAgent::Draw()
     {
         DrawCircleGradient((m_position.x + 0.5f) * 30, (m_position.y + 0.5f) * 30, 10, RED, BLUE);
+    }
+    std::vector<Node*> PathAgent::GetPath()
+    {
+        return m_path;
     }
 }
 

@@ -5,11 +5,9 @@
 
 namespace AIForGames
 {
-	class GotoPointBehaviour : public Behaviour
-
+	class WanderBehaviour : public Behaviour
 	{
 	public:
-
 		void Update(Agent* agent, float deltaTime) override;
 	};
 }

@@ -12,6 +12,8 @@
 #include "State.h"
 #include "DistanceCondition.h"
 
+#include "UtilityAI.h"
+
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
@@ -77,6 +79,16 @@ int main()
     agent2.SetSpeed(4);
     agent2.SetTarget(&agent);
 
+    UtilityAI* utilityAI = new UtilityAI();
+    utilityAI->AddBehaviour(new WanderBehaviour());
+    utilityAI->AddBehaviour(new FollowBehaviour());
+
+    Agent agent3(&nodeMap, utilityAI);
+    agent3.SetNode(nodeMap.GetRandomNode());
+    agent3.SetSpeed(10);
+    agent3.SetTarget(&agent);
+
+
     /*
     Agent agent3(&nodeMap, new WanderBehaviour());
     agent3.SetNode(nodeMap.GetRandomNode());
@@ -96,6 +108,7 @@ int main()
     
     agentBag.push_back(&agent);
     agentBag.push_back(&agent2);
+    agentBag.push_back(&agent3);
     /*agentBag.push_back(&agent3);
     agentBag.push_back(&agent4);
     agentBag.push_back(&agent5);*/
@@ -107,6 +120,7 @@ int main()
 
         BeginDrawing();
         ClearBackground(BLACK);
+        
 
         nodeMap.Draw();
 
@@ -130,6 +144,8 @@ int main()
             a->Update(GetFrameTime());
             a->Draw();
         }
+
+        DrawFPS(15, 15);
 
         EndDrawing();
     }

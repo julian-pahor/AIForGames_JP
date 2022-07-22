@@ -1,4 +1,5 @@
 #include "Pathfinding.h"
+#include "glm/glm.hpp"
 #include "raylib.h"
 #include <iostream>
 #include <list>
@@ -9,6 +10,16 @@ namespace AIForGames
     bool compare_G(Node* first, Node* second)
     {
         return (first->gScore < second->gScore);
+    }
+
+    bool compare_F(Node* first, Node* second)
+    {
+        return (first->fScore < second->fScore);
+    }
+
+    float Heuristic(Node* first, Node* second)
+    {
+        return glm::distance(first->position, second->position);
     }
 
     Node* NodeMap::GetRandomNode()
@@ -23,6 +34,87 @@ namespace AIForGames
         }
 
         return node;
+    }
+
+    std::vector<Node*> NodeMap::AStarSearch(Node* startNode, Node* endNode)
+    {
+        std::vector<Node*> dPath;
+
+        if (endNode == nullptr)
+        {
+            return dPath;
+        }
+
+        if (startNode == nullptr || endNode == nullptr)
+        {
+            throw std::runtime_error("Start or End node = nullptr");
+        }
+
+        if (startNode == endNode)
+        {
+            return dPath;
+        }
+
+        startNode->gScore = 0;
+        startNode->previous = nullptr;
+
+        std::list<Node*> openList, closedList;
+
+        openList.push_front(startNode);
+
+        Node* cNode;
+
+        while (!openList.empty())
+        {
+            openList.sort(compare_F);
+
+
+            cNode = openList.front();
+
+            if (cNode == endNode)
+            {
+                break;
+            }
+
+            openList.remove(cNode);
+            closedList.push_front(cNode);
+
+            for (Edge e : cNode->connections)
+            {
+                if (std::find(closedList.begin(), closedList.end(), e.target) == closedList.end())
+                {
+                    float gScore = cNode->gScore + e.cost;
+                    float hScore = Heuristic(e.target, endNode);
+                    float fScore = gScore + hScore;
+
+                    if (std::find(openList.begin(), openList.end(), e.target) == openList.end())
+                    {
+                        e.target->gScore = gScore;
+                        e.target->fScore = fScore;
+                        e.target->previous = cNode;
+                        openList.push_front(e.target);
+                    }
+                    else if (fScore < e.target->fScore)
+                    {
+                        e.target->gScore = gScore;
+                        e.target->fScore = fScore;
+                        e.target->previous = cNode;
+                    }
+                }
+            }
+        }
+
+        cNode = endNode;
+
+        while (cNode != nullptr)
+        {
+            dPath.push_back(cNode);
+            cNode = cNode->previous;
+        }
+
+        std::reverse(dPath.begin(), dPath.end());
+
+        return dPath;
     }
 
     std::vector<Node*> NodeMap::DijkstrasSearch(Node* startNode, Node* endNode)

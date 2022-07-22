@@ -26,6 +26,8 @@ namespace AIForGames
         std::vector<Edge> connections;
 
         float gScore;
+        float hScore;
+        float fScore;
         Node* previous = nullptr;
 
         void ConnectTo(Node* other, float cost);
@@ -48,6 +50,8 @@ namespace AIForGames
         }
 
         Node* GetRandomNode();
+
+        static std::vector<Node*> AStarSearch(Node* startNode, Node* endNode);
 
         static std::vector<Node*> DijkstrasSearch(Node* startNode, Node* endNode);
 

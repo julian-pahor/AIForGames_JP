@@ -30,7 +30,7 @@ namespace AIForGames
 	}
     void FollowBehaviour::Exit(Agent* agent)
     {
-        agent->ResetPath();
+        //agent->ResetPath();
     }
     float FollowBehaviour::Evaluate(Agent* agent)
     {

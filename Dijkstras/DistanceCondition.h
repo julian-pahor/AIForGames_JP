@@ -11,7 +11,7 @@ namespace AIForGames
 
 	public:
 		DistanceCondition(float d, bool lt) : m_distance(d), m_lessThan(lt) {}
-		bool IsTrue(Agent* agent) override;
+		bool IsTrue(Agent* agent, float deltaTime) override;
 	};
 }
 

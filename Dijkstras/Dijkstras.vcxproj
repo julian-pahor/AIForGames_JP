@@ -147,10 +147,12 @@
     <ClCompile Include="FiniteStateMachine.cpp" />
     <ClCompile Include="FollowBehaviour.cpp" />
     <ClCompile Include="GotoPointBehaviour.cpp" />
+    <ClCompile Include="InvestigateBehaviour.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="Pathfinding.cpp" />
     <ClCompile Include="SelectorBehaviour.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="TimerCondition.cpp" />
     <ClCompile Include="UtilityAI.cpp" />
     <ClCompile Include="WanderBehaviour.cpp" />
   </ItemGroup>
@@ -165,10 +167,12 @@
     <ClInclude Include="FiniteStateMachine.h" />
     <ClInclude Include="FollowBehaviour.h" />
     <ClInclude Include="GotoPointBehaviour.h" />
+    <ClInclude Include="InvestigateBehaviour.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="Pathfinding.h" />
     <ClInclude Include="SelectorBehaviour.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="TimerCondition.h" />
     <ClInclude Include="UtilityAI.h" />
     <ClInclude Include="WanderBehaviour.h" />
   </ItemGroup>

@@ -6,11 +6,13 @@
 #include "WanderBehaviour.h"
 #include "FollowBehaviour.h"
 #include "SelectorBehaviour.h"
+#include "InvestigateBehaviour.h"
 
 #include "FiniteStateMachine.h"
 #include "Condition.h"
 #include "State.h"
 #include "DistanceCondition.h"
+#include "TimerCondition.h"
 
 #include "UtilityAI.h"
 
@@ -56,18 +58,22 @@ int main()
 
     //set up a FSM, we're going to have two states with their own conditions
     DistanceCondition* closerThan5 = new DistanceCondition(5.0f, true);
-    DistanceCondition* furtherThan7 = new DistanceCondition(7.0f, false);
+    DistanceCondition* furtherThan5 = new DistanceCondition(5.0f, false);
+    TimerCondition* countdown4 = new TimerCondition(4.0f);
 
     //register these states with the FSM, so it's responsible for deleting them now
     State* wanderState = new State(new WanderBehaviour());
     State* followState = new State(new FollowBehaviour());
+    State* investigateState = new State(new InvestigateBehaviour());
     wanderState->AddTransition(closerThan5, followState);
-    followState->AddTransition(furtherThan7, wanderState);
+    followState->AddTransition(furtherThan5, investigateState);
+    investigateState->AddTransition(countdown4, wanderState);
 
     //make a FSM that starts off wandering
     FiniteStateMachine* fsm = new FiniteStateMachine(wanderState);
     fsm->AddState(wanderState);
     fsm->AddState(followState);
+    fsm->AddState(investigateState);
 
     Agent agent(&nodeMap, new GotoPointBehaviour());
     agent.SetNode(nodeMap.GetRandomNode());
@@ -85,33 +91,35 @@ int main()
 
     Agent agent3(&nodeMap, utilityAI);
     agent3.SetNode(nodeMap.GetRandomNode());
-    agent3.SetSpeed(10);
+    agent3.SetSpeed(4);
     agent3.SetTarget(&agent);
 
 
-    /*
-    Agent agent3(&nodeMap, new WanderBehaviour());
-    agent3.SetNode(nodeMap.GetRandomNode());
-    agent3.SetColor(PURPLE);
-    agent3.SetSpeed(2);
+    
+    Agent agent6(&nodeMap, new WanderBehaviour());
+    agent6.SetNode(nodeMap.GetRandomNode());
+    agent6.SetColor(SKYBLUE);
+    agent6.SetSpeed(1);
 
-    Agent agent4(&nodeMap, new FollowBehaviour());
+    Agent agent4(&nodeMap, new WanderBehaviour());
     agent4.SetNode(nodeMap.GetRandomNode());
     agent4.SetColor(SKYBLUE);
-    agent4.SetSpeed(4);
-    agent4.SetTarget(&agent);
+    agent4.SetSpeed(1);
+    
 
-    Agent agent5(&nodeMap, new SelectorBehaviour(new FollowBehaviour(), new WanderBehaviour()));
+    Agent agent5(&nodeMap, new WanderBehaviour());
     agent5.SetNode(nodeMap.GetRandomNode());
-    agent5.SetSpeed(3);
-    agent5.SetTarget(&agent);*/
+    agent5.SetSpeed(1);
+    agent5.SetColor(SKYBLUE);
+    
     
     agentBag.push_back(&agent);
     agentBag.push_back(&agent2);
     agentBag.push_back(&agent3);
-    /*agentBag.push_back(&agent3);
+    agentBag.push_back(&agent3);
     agentBag.push_back(&agent4);
-    agentBag.push_back(&agent5);*/
+    agentBag.push_back(&agent5);
+    agentBag.push_back(&agent6);
 
     InitWindow(1500, 600, "Djikstras!");
 
@@ -120,24 +128,8 @@ int main()
 
         BeginDrawing();
         ClearBackground(BLACK);
-        
 
         nodeMap.Draw();
-
-        /*agent.Update(GetFrameTime());
-        agent.Draw();
-
-        agent2.Update(GetFrameTime());
-        agent2.Draw();
-
-        agent3.Update(GetFrameTime());
-        agent3.Draw();
-
-        agent4.Update(GetFrameTime());
-        agent4.Draw();
-
-        agent5.Update(GetFrameTime());
-        agent5.Draw();*/
 
         for (Agent* a : agentBag)
         {

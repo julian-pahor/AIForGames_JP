@@ -4,7 +4,7 @@
 
 namespace AIForGames
 {
-	void AIForGames::WanderBehaviour::Update(Agent* agent, float deltaTime)
+	void WanderBehaviour::Update(Agent* agent, float deltaTime)
 	{
 		if (agent->PathComplete())
 		{

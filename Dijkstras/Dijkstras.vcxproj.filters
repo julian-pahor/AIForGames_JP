@@ -57,6 +57,12 @@
     <ClCompile Include="UtilityAI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="InvestigateBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerCondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -99,6 +105,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UtilityAI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="InvestigateBehaviour.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerCondition.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

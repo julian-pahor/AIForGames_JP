@@ -21,6 +21,7 @@ namespace AIForGames
 
     public:
         glm::vec2 GetPosition();
+        Node* GetCurrentNode();
         void SetNode(Node* node);
         void SetSpeed(float speed) { m_speed = speed; }
         void Update(float deltaTime);

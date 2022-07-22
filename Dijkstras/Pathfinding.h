@@ -51,6 +51,8 @@ namespace AIForGames
 
         Node* GetRandomNode();
 
+        Node* GetNearbyNode(Node* target);
+
         static std::vector<Node*> AStarSearch(Node* startNode, Node* endNode);
 
         static std::vector<Node*> DijkstrasSearch(Node* startNode, Node* endNode);

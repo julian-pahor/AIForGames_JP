@@ -36,6 +36,30 @@ namespace AIForGames
         return node;
     }
 
+    Node* NodeMap::GetNearbyNode(Node* target)
+    {
+        Node* targetNode = target;
+        Node* node = nullptr;
+
+        bool found = false;
+
+        while (!found)
+        {
+            found = true;
+
+            node = GetRandomNode();
+
+            if (Heuristic(node, targetNode) > 2.5f)
+            {
+                found = false;
+            }
+        }
+
+        return node;
+    }
+
+   
+
     std::vector<Node*> NodeMap::AStarSearch(Node* startNode, Node* endNode)
     {
         std::vector<Node*> dPath;
@@ -257,11 +281,7 @@ namespace AIForGames
     void NodeMap::Draw()
     {
         // red color for the blocks
-        Color cellColor;
-        cellColor.a = 255;
-        cellColor.r = 255;
-        cellColor.g = 0;
-        cellColor.b = 0;
+        Color cellColor = DARKBROWN;
         Color lineColor = SKYBLUE;
 
         for (int y = 0; y < m_height; y++)

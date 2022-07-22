@@ -7,6 +7,10 @@ namespace AIForGames
     {
         return m_position;
     }
+    Node* PathAgent::GetCurrentNode()
+    {
+        return m_currentNode;
+    }
     void PathAgent::SetNode(Node* node)
     {
         if (node == nullptr)

@@ -68,6 +68,8 @@ namespace Precon
 
         Node* GetNearbyNode(Node* target);
 
+        Node* GetStartNode();
+
         static std::vector<Node*> AStarSearch(Node* startNode, Node* endNode);
 
         void Initialise(std::vector<std::string> asciiMap, int cellSize);

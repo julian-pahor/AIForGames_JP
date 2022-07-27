@@ -24,11 +24,14 @@ namespace Precon
         Node* GetCurrentNode();
         void SetNode(Node* node);
         void SetSpeed(float speed) { m_speed = speed; }
+        float GetSpeed() { return m_speed; }
         void Update(float deltaTime);
         void GoToNode(Node* node);
         void Draw(Color color);
         void ClearPath();
         std::vector<Node*> GetPath();
+
+        void Translate(glm::vec2 movement);
     };
 }
 

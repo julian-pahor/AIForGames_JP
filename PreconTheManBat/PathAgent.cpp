@@ -97,9 +97,7 @@ namespace Precon
                     RED);
             }
         }
-
     }
-
 
     void PathAgent::ClearPath()
     {
@@ -109,6 +107,10 @@ namespace Precon
     std::vector<Node*> PathAgent::GetPath()
     {
         return m_path;
+    }
+    void PathAgent::Translate(glm::vec2 movement)
+    {
+        
     }
 }
 

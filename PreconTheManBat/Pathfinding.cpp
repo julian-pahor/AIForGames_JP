@@ -53,6 +53,20 @@ namespace Precon
         return node;
     }
 
+    Node* NodeMap::GetStartNode()
+    {
+        Node* node = nullptr;
+
+        node = GetRandomNode();
+
+        while (!node->entryNode)
+        {
+            node = GetRandomNode();
+        }
+
+        return node;
+    }
+
 
 
     std::vector<Node*> NodeMap::AStarSearch(Node* startNode, Node* endNode)

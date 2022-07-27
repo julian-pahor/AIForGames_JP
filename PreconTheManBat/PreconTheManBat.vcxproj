@@ -142,23 +142,39 @@
     <ClCompile Include="Agent.cpp" />
     <ClCompile Include="Behaviour.cpp" />
     <ClCompile Include="Condition.cpp" />
+    <ClCompile Include="DistanceCondition.cpp" />
     <ClCompile Include="FSM.cpp" />
+    <ClCompile Include="GoToBehaviour.cpp" />
+    <ClCompile Include="HuntBehaviour.cpp" />
+    <ClCompile Include="InputCondition.cpp" />
+    <ClCompile Include="InvestigateBehaviour.cpp" />
     <ClCompile Include="PathAgent.cpp" />
     <ClCompile Include="Pathfinding.cpp" />
+    <ClCompile Include="PlayerBehaviour.cpp" />
     <ClCompile Include="PreconTheManBat.cpp" />
     <ClCompile Include="State.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ClCompile Include="TimerCondition.cpp" />
+    <ClCompile Include="WanderBehaviour.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Agent.h" />
     <ClInclude Include="Behaviour.h" />
     <ClInclude Include="Condition.h" />
+    <ClInclude Include="DistanceCondition.h" />
     <ClInclude Include="FSM.h" />
+    <ClInclude Include="GoToBehaviour.h" />
+    <ClInclude Include="HuntBehaviour.h" />
+    <ClInclude Include="InputCondition.h" />
+    <ClInclude Include="InvestigateBehaviour.h" />
     <ClInclude Include="PathAgent.h" />
     <ClInclude Include="Pathfinding.h" />
+    <ClInclude Include="PlayerBehaviour.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="TimerCondition.h" />
+    <ClInclude Include="WanderBehaviour.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -140,6 +140,8 @@ namespace Precon
     {
         m_cellSize = cellSize;
         const char emptySquare = '0';
+        const char entrySquare = '2';
+        const char exitSquare = '3';
 
         // assume all strings are the same length, so we'll size the map according
         // to the number of strings and the length of the first one
@@ -162,8 +164,21 @@ namespace Precon
                 // isn't long enough
                 char tile = x < line.size() ? line[x] : emptySquare;
 
-                // create a node for anything but a '.' character
-                m_nodes[x + m_width * y] = (tile == emptySquare) ? nullptr : new Node(x, y);
+                switch (tile)
+                {
+                case emptySquare:
+                    m_nodes[x + m_width * y] = nullptr;
+                    break;
+                case entrySquare:
+                    m_nodes[x + m_width * y] = new Node(x, y, 2);
+                    break;
+                case exitSquare:
+                    m_nodes[x + m_width * y] = new Node(x, y, 3);
+                    break;
+                default:
+                    m_nodes[x + m_width * y] = new Node(x, y);
+                    break;
+                }
             }
         }
 
@@ -200,8 +215,9 @@ namespace Precon
     {
         //Color for the blocks
         Color cellColor = DARKBROWN;
-        Color lineColor = SKYBLUE;
         Color pathColor = GREEN;
+        Color entryColor = BLUE;
+        Color exitColor = RED;
 
 
         for (int y = 0; y < m_height; y++)
@@ -211,10 +227,21 @@ namespace Precon
                 Node* node = GetNode(x, y);
                 if (node == nullptr)
                 {
-
                     // draw a solid block in empty squares without a navigation node
                     DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
                         (int)m_cellSize - 1, (int)m_cellSize - 1, cellColor);
+                }
+                else if (node->entryNode)
+                {
+                    node->nodeColor = entryColor;
+                    DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
+                        (int)m_cellSize - 1, (int)m_cellSize - 1, node->nodeColor);
+                }
+                else if (node->exitNode)
+                {
+                    node->nodeColor = exitColor;
+                    DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
+                        (int)m_cellSize - 1, (int)m_cellSize - 1, node->nodeColor);
                 }
                 else
                 {
@@ -226,16 +253,9 @@ namespace Precon
 
                     DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
                         (int)m_cellSize - 1, (int)m_cellSize - 1, node->nodeColor);
-                    // draw the connections between the node and its neighbours
-                    /*for (int i = 0; i < node->connections.size(); i++)
-                    {
-                        Node* other = node->connections[i].target;
-                        DrawLine((x + 0.5f) * m_cellSize, (y + 0.5f) * m_cellSize,
-                            (other->position.x + 0.5f) * m_cellSize,
-                            (other->position.y + 0.5f) * m_cellSize,
-                            lineColor);
-                    }*/
+
                 }
+
             }
         }
     }

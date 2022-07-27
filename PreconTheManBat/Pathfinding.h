@@ -21,6 +21,17 @@ namespace Precon
     struct Node
     {
         Node(float x, float y) : position(x, y) { }
+        Node(float x, float y, float type) : position(x, y)
+        {
+            if (type == 2)
+            {
+                entryNode = true;
+            }
+            else if (type == 3)
+            {
+                exitNode = true;
+            }
+        }
 
         glm::vec2 position;
         std::vector<Edge> connections;
@@ -30,6 +41,9 @@ namespace Precon
         float fScore;
         Color nodeColor = WHITE;
         Node* previous = nullptr;
+        
+        bool entryNode = false;
+        bool exitNode = false;
 
         void ConnectTo(Node* other, float cost);
     };

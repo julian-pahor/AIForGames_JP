@@ -280,9 +280,11 @@ namespace AIForGames
 
     void NodeMap::Draw()
     {
-        // red color for the blocks
+        //Color for the blocks
         Color cellColor = DARKBROWN;
         Color lineColor = SKYBLUE;
+        Color pathColor = GREEN;
+
 
         for (int y = 0; y < m_height; y++)
         {
@@ -291,12 +293,21 @@ namespace AIForGames
                 Node* node = GetNode(x, y);
                 if (node == nullptr)
                 {
+                    
                     // draw a solid block in empty squares without a navigation node
                     DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
                         (int)m_cellSize - 1, (int)m_cellSize - 1, cellColor);
                 }
                 else
                 {
+                    if (node->nodeColor.a == 255)
+                    {
+                        pathColor.a = GetRandomValue(75, 115);
+                        node->nodeColor = pathColor;
+                    }
+
+                    DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
+                        (int)m_cellSize - 1, (int)m_cellSize - 1, node->nodeColor);
                     // draw the connections between the node and its neighbours
                     /*for (int i = 0; i < node->connections.size(); i++)
                     {

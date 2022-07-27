@@ -1,12 +1,12 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <raylib.h>
 #include <vector>
 #include <string>
 
 namespace AIForGames
 {
-
     struct Node;
 
     struct Edge
@@ -28,6 +28,7 @@ namespace AIForGames
         float gScore;
         float hScore;
         float fScore;
+        Color nodeColor = WHITE;
         Node* previous = nullptr;
 
         void ConnectTo(Node* other, float cost);

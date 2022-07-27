@@ -253,9 +253,7 @@ namespace Precon
 
                     DrawRectangle((int)(x * m_cellSize), (int)(y * m_cellSize),
                         (int)m_cellSize - 1, (int)m_cellSize - 1, node->nodeColor);
-
                 }
-
             }
         }
     }

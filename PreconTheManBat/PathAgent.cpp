@@ -50,10 +50,12 @@ namespace Precon
         }
         else
         {
+
             m_currentNode = m_path[m_currentIndex];
 
             m_currentIndex++;
 
+            
 
             if (m_currentIndex == m_path.size())
             {
@@ -86,6 +88,7 @@ namespace Precon
 
         DrawCircle((m_position.x + 0.5f) * 25, (m_position.y + 0.5f) * 25, 10, color);
 
+
         if (m_path.size() > 1)
         {
             for (int i = 0; i < m_path.size() - 1; i++)
@@ -108,9 +111,14 @@ namespace Precon
     {
         return m_path;
     }
+
     void PathAgent::Translate(glm::vec2 movement)
     {
-        
+        //being passed a vector2 for standard WASD movement control
+        //0,1 = w
+        //0,-1 = s
+        //1,0 = d
+        //-1, 0 == a
     }
 }
 

@@ -12,6 +12,7 @@ namespace Precon
 	public:
 		TimerCondition(float t) : m_timer(t), m_cooldown(t) {}
 		bool IsTrue(Agent* agent, float deltaTime) override;
+		void Exit(Agent* agent) override;
 
 	};
 }

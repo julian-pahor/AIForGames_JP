@@ -72,6 +72,11 @@ namespace Precon
         return m_pathAgent;
     }
 
+    PathAgent* Agent::GetPathAgentPointer()
+    {
+        return &m_pathAgent;
+    }
+
     void Agent::ResetPath()
     {
         m_pathAgent.ClearPath();

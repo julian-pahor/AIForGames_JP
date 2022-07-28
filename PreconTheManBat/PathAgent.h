@@ -31,7 +31,7 @@ namespace Precon
         void ClearPath();
         std::vector<Node*> GetPath();
 
-        void Translate(glm::vec2 movement);
+        void Translate(glm::vec2 movement, float deltaTime);
     };
 }
 

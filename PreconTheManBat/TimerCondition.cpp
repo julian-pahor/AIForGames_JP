@@ -11,10 +11,13 @@ namespace Precon
 		if (m_timer < 0)
 		{
 			check = true;
-			m_timer = m_cooldown;
 		}
 
 		return check;
+	}
+	void TimerCondition::Exit(Agent* agent)
+	{
+		m_timer = m_cooldown;
 	}
 }
 

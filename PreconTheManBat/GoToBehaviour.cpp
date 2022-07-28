@@ -26,6 +26,10 @@ namespace Precon
         glm::vec2 pPos = { ((gPos.x + 0.5f) * cellSize), ((gPos.y + 0.5f) * cellSize) };
         agent->GoTo(pPos);
 
+        if (IsKeyPressed(KEY_SPACE))
+        {
+            Enter(agent);
+        }
     }
 }
 

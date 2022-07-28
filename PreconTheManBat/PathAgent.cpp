@@ -7,10 +7,12 @@ namespace Precon
     {
         return m_position;
     }
+
     Node* PathAgent::GetCurrentNode()
     {
         return m_currentNode;
     }
+
     void PathAgent::SetNode(Node* node)
     {
         if (node == nullptr)
@@ -55,8 +57,6 @@ namespace Precon
 
             m_currentIndex++;
 
-            
-
             if (m_currentIndex == m_path.size())
             {
                 m_position = m_path[m_currentIndex - 1]->position;
@@ -65,8 +65,6 @@ namespace Precon
             }
             else
             {
-
-
                 distance *= -1; //inverse the direction back to a positive value
 
                 direction = glm::normalize(m_position - nodeWV);
@@ -112,13 +110,16 @@ namespace Precon
         return m_path;
     }
 
-    void PathAgent::Translate(glm::vec2 movement)
+    void PathAgent::Translate(glm::vec2 movement, float deltaTime)
     {
         //being passed a vector2 for standard WASD movement control
         //0,1 = w
         //0,-1 = s
         //1,0 = d
         //-1, 0 == a
+
+        m_position += m_speed * movement * deltaTime;
+
     }
 }
 

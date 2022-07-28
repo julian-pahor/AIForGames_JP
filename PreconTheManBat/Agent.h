@@ -31,6 +31,7 @@ namespace Precon
         Agent* GetTarget();
         void SetTarget(Agent* agent);
         PathAgent GetPathAgent();
+        PathAgent* GetPathAgentPointer();
 
         void ResetPath();
 

@@ -53,7 +53,6 @@ int main()
     TimerCondition* countdown5 = new TimerCondition(5.0f);
     InputCondition* spacebarPress = new InputCondition(KEY_SPACE);
 
-
     //register these states with the FSM, so it's responsible for deleting them now
     State* wanderState = new State(new WanderBehaviour());
     State* huntState = new State(new HuntBehaviour());
@@ -62,9 +61,12 @@ int main()
 
     gotoState->AddTransition(countdown5, investigateState);
     gotoState->AddTransition(closerThan5, huntState);
+
     wanderState->AddTransition(closerThan5, huntState);
     wanderState->AddTransition(spacebarPress, gotoState);
+
     huntState->AddTransition(furtherThan5, investigateState);
+
     investigateState->AddTransition(countdown4, wanderState);
     investigateState->AddTransition(closerThan5, huntState);
     investigateState->AddTransition(spacebarPress, gotoState);
@@ -90,8 +92,28 @@ int main()
 
     InitWindow(1600, 900, "Precon The ManBat!");
 
+    Color screenShade = BLACK;
+    float shadeCD{};
+    float shadeTimer = .05f;
+    screenShade.a = 0;
+
     while (!WindowShouldClose())
     {
+
+        shadeCD += GetFrameTime();
+
+        if (screenShade.a < BLACK.a && shadeCD > shadeTimer)
+        {
+            screenShade.a += ('B' - 'A'); //adding a unsigned char value of 1 per tick
+            shadeCD = 0;
+        }
+        
+
+        if (IsKeyPressed(KEY_SPACE))
+        {
+            screenShade.a = 35;
+        }
+
         BeginDrawing();
         ClearBackground(BLACK);
 
@@ -102,6 +124,8 @@ int main()
             a->Update(GetFrameTime());
             a->Draw();
         }
+
+        DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), screenShade);
 
         DrawFPS(15, 15);
 

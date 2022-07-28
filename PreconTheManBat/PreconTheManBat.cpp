@@ -92,7 +92,7 @@ int main()
     agentList.push_back(&agent);
     agentList.push_back(&agent2);
 
-    InitWindow(1600, 900, "Precon The ManBat!");
+    InitWindow(1000, 600, "Precon The ManBat!");
 
     Color screenShade = BLACK;
     float shadeCD{};
@@ -106,11 +106,10 @@ int main()
 
         if (screenShade.a < BLACK.a && shadeCD > shadeTimer)
         {
-            screenShade.a += ('B' - 'A'); //adding a unsigned char value of 1 per tick
+            screenShade.a += 1; 
             shadeCD = 0;
         }
         
-
         if (IsKeyPressed(KEY_SPACE))
         {
             screenShade.a = 35;
@@ -132,11 +131,18 @@ int main()
         if (agent.CheckWin())
         {
             agentList.clear();
-            screenShade = RED;
+            screenShade = BLUE;
             screenShade.a = 175;
             DrawText("Precon has Escaped...", ((GetScreenWidth() / 2) - 250), GetScreenHeight() / 2, 50, BLACK);
         }
 
+        if (agent2.CheckKill())
+        {
+            agentList.clear();
+            screenShade = RED;
+            screenShade.a = 175;
+            DrawText("Precon has fallen...", ((GetScreenWidth() / 2) - 250), GetScreenHeight() / 2, 50, BLACK);
+        }
         DrawFPS(15, 15);
 
         EndDrawing();

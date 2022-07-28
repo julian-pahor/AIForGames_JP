@@ -87,7 +87,9 @@ namespace Precon
         DrawCircle((m_position.x + 0.5f) * 25, (m_position.y + 0.5f) * 25, 10, color);
 
 
-        if (m_path.size() > 1)
+        //Drawing of Path, useful for debugging but not needed for gameplay
+
+        /*if (m_path.size() > 1)
         {
             for (int i = 0; i < m_path.size() - 1; i++)
             {
@@ -97,7 +99,7 @@ namespace Precon
                     (m_path[i + 1]->position.y + 0.5f) * 25,
                     RED);
             }
-        }
+        }*/
     }
 
     void PathAgent::ClearPath()

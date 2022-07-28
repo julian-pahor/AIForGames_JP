@@ -27,6 +27,7 @@ namespace Precon
         bool PathComplete();
         
         bool CheckWin();
+        bool CheckKill();
 
         NodeMap* GetNodeMap();
         Agent* GetTarget();

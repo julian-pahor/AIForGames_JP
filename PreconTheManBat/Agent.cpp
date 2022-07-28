@@ -68,6 +68,25 @@ namespace Precon
             return false;
         }
     }
+    bool Agent::CheckKill()
+    {
+        Node* node;
+
+        node = m_pathAgent.GetCurrentNode();
+
+        Node* targetNode;
+
+        targetNode = m_targetAgent->GetPathAgent().GetCurrentNode();
+
+        if (node == targetNode)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        } 
+    }
     NodeMap* Agent::GetNodeMap()
     {
         return m_nodeMap;

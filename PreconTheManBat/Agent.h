@@ -25,7 +25,8 @@ namespace Precon
         void SetSpeed(float speed);
         void Draw();
         bool PathComplete();
-
+        
+        bool CheckWin();
 
         NodeMap* GetNodeMap();
         Agent* GetTarget();

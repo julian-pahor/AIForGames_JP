@@ -288,6 +288,7 @@ namespace Precon
 
         return GetNode(i, j);
     }
+
     float NodeMap::GetCellSize()
     {
         return m_cellSize;

@@ -9,6 +9,8 @@ namespace Precon
     {
         agent->SetColor(DARKBLUE);
         m_targetPosition = { 0 , 0 };
+        m_speed = agent->GetPathAgent().GetSpeed();
+        agent->SetSpeed(m_speed * 1.5f);
 
         Agent* target = agent->GetTarget();
 
@@ -30,6 +32,10 @@ namespace Precon
         {
             Enter(agent);
         }
+    }
+    void GoToBehaviour::Exit(Agent* agent)
+    {
+        agent->SetSpeed(m_speed);
     }
 }
 

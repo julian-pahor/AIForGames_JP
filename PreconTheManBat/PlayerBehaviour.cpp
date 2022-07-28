@@ -36,6 +36,9 @@ namespace Precon
 			m_movement.x = 0;
 		}
 
-		agent->GetPathAgentPointer()->Translate(m_movement, deltaTime);
+		agent->GetPathAgentPointer()->Translate(m_movement,agent->GetNodeMap(), deltaTime);
+
+		
+		
 	}
 }

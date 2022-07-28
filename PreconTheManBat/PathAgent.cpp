@@ -110,16 +110,33 @@ namespace Precon
         return m_path;
     }
 
-    void PathAgent::Translate(glm::vec2 movement, float deltaTime)
+    void PathAgent::Translate(glm::vec2 movement,NodeMap* nodeMap, float deltaTime)
     {
         //being passed a vector2 for standard WASD movement control
         //0,1 = w
         //0,-1 = s
         //1,0 = d
         //-1, 0 == a
+        
+        glm::vec2 worldPos = { (m_position.x + 0.5f) * 25, (m_position.y + 0.5f) * 25 };
 
-        m_position += m_speed * movement * deltaTime;
+        Node* closestNode = nodeMap->GetClosestNode(worldPos);
 
+        m_pushBack -= deltaTime;
+
+        if (!closestNode)
+        {
+            m_pushBack = m_pushBackTimer;
+            m_position += m_speed * -movement * deltaTime;
+        }
+        else if(closestNode && m_pushBack < 0)
+        {
+            m_currentNode = closestNode;
+            m_position += m_speed * movement * deltaTime;
+        }
+        
+
+        
     }
 }
 

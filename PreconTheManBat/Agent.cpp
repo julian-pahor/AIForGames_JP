@@ -53,6 +53,21 @@ namespace Precon
     {
         return m_pathAgent.GetPath().empty();
     }
+    bool Agent::CheckWin()
+    {
+        Node* node;
+
+        node = m_pathAgent.GetCurrentNode();
+
+        if (node->exitNode)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     NodeMap* Agent::GetNodeMap()
     {
         return m_nodeMap;

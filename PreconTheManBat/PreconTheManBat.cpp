@@ -31,19 +31,21 @@ int main()
     list<Agent*> agentList;
 
     vector<string> asciiMap;
-    asciiMap.push_back("00000000000000000000000000000330");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("01111111111111111111111111111110");
-    asciiMap.push_back("02200000000000000000000000000000");
+    asciiMap.push_back("0000000000000000000000000000000000");
+    asciiMap.push_back("0000000000000000000000000000003300");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0011111111111111111111111111111100");
+    asciiMap.push_back("0022000000000000000000000000000000");
+    asciiMap.push_back("0000000000000000000000000000000000");
 
     nodeMap.Initialise(asciiMap, 25);
 
@@ -94,7 +96,7 @@ int main()
 
     Color screenShade = BLACK;
     float shadeCD{};
-    float shadeTimer = .05f;
+    float shadeTimer = .02f;
     screenShade.a = 0;
 
     while (!WindowShouldClose())
@@ -126,6 +128,14 @@ int main()
         }
 
         DrawRectangle(0, 0, GetScreenWidth(), GetScreenHeight(), screenShade);
+
+        if (agent.CheckWin())
+        {
+            agentList.clear();
+            screenShade = RED;
+            screenShade.a = 175;
+            DrawText("Precon has Escaped...", ((GetScreenWidth() / 2) - 250), GetScreenHeight() / 2, 50, BLACK);
+        }
 
         DrawFPS(15, 15);
 

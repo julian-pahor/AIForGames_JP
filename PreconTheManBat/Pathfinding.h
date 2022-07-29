@@ -9,6 +9,7 @@ namespace Precon
 {
     struct Node;
 
+    //Edge node used to store data on connecting nodes and their travel cost between eachother
     struct Edge
     {
         Edge() { target = nullptr; cost = 0; }

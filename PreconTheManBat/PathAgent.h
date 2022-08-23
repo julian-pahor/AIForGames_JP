@@ -19,6 +19,10 @@ namespace Precon
 
         float m_speed;
 
+
+        float m_pushBack = 0.f;
+        float m_pushBackTimer = 0.2f;
+
     public:
         glm::vec2 GetPosition();
         Node* GetCurrentNode();
@@ -31,7 +35,7 @@ namespace Precon
         void ClearPath();
         std::vector<Node*> GetPath();
 
-        void Translate(glm::vec2 movement);
+        void Translate(glm::vec2 movement,NodeMap* nodeMap, float deltaTime);
     };
 }
 

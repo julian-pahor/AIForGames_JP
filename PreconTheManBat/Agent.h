@@ -25,12 +25,15 @@ namespace Precon
         void SetSpeed(float speed);
         void Draw();
         bool PathComplete();
-
+        
+        bool CheckWin();
+        bool CheckKill();
 
         NodeMap* GetNodeMap();
         Agent* GetTarget();
         void SetTarget(Agent* agent);
         PathAgent GetPathAgent();
+        PathAgent* GetPathAgentPointer();
 
         void ResetPath();
 

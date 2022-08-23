@@ -7,10 +7,12 @@ namespace Precon
     {
         return m_position;
     }
+
     Node* PathAgent::GetCurrentNode()
     {
         return m_currentNode;
     }
+
     void PathAgent::SetNode(Node* node)
     {
         if (node == nullptr)
@@ -55,8 +57,6 @@ namespace Precon
 
             m_currentIndex++;
 
-            
-
             if (m_currentIndex == m_path.size())
             {
                 m_position = m_path[m_currentIndex - 1]->position;
@@ -65,8 +65,6 @@ namespace Precon
             }
             else
             {
-
-
                 distance *= -1; //inverse the direction back to a positive value
 
                 direction = glm::normalize(m_position - nodeWV);
@@ -89,7 +87,9 @@ namespace Precon
         DrawCircle((m_position.x + 0.5f) * 25, (m_position.y + 0.5f) * 25, 10, color);
 
 
-        if (m_path.size() > 1)
+        //Drawing of Path, useful for debugging but not needed for gameplay
+
+        /*if (m_path.size() > 1)
         {
             for (int i = 0; i < m_path.size() - 1; i++)
             {
@@ -99,7 +99,7 @@ namespace Precon
                     (m_path[i + 1]->position.y + 0.5f) * 25,
                     RED);
             }
-        }
+        }*/
     }
 
     void PathAgent::ClearPath()
@@ -112,13 +112,33 @@ namespace Precon
         return m_path;
     }
 
-    void PathAgent::Translate(glm::vec2 movement)
+    void PathAgent::Translate(glm::vec2 movement,NodeMap* nodeMap, float deltaTime)
     {
         //being passed a vector2 for standard WASD movement control
         //0,1 = w
         //0,-1 = s
         //1,0 = d
         //-1, 0 == a
+        
+        glm::vec2 worldPos = { (m_position.x + 0.5f) * 25, (m_position.y + 0.5f) * 25 };
+
+        Node* closestNode = nodeMap->GetClosestNode(worldPos);
+
+        m_pushBack -= deltaTime;
+
+        if (!closestNode)
+        {
+            m_pushBack = m_pushBackTimer;
+            m_position += m_speed * -movement * deltaTime;
+        }
+        else if(closestNode && m_pushBack < 0)
+        {
+            m_currentNode = closestNode;
+            m_position += m_speed * movement * deltaTime;
+        }
+        
+
+        
     }
 }
 

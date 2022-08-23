@@ -9,6 +9,8 @@ namespace Precon
     {
         agent->SetColor(DARKBLUE);
         m_targetPosition = { 0 , 0 };
+        m_speed = agent->GetPathAgent().GetSpeed();
+        agent->SetSpeed(m_speed * 1.5f);
 
         Agent* target = agent->GetTarget();
 
@@ -26,6 +28,14 @@ namespace Precon
         glm::vec2 pPos = { ((gPos.x + 0.5f) * cellSize), ((gPos.y + 0.5f) * cellSize) };
         agent->GoTo(pPos);
 
+        if (IsKeyPressed(KEY_SPACE))
+        {
+            Enter(agent);
+        }
+    }
+    void GoToBehaviour::Exit(Agent* agent)
+    {
+        agent->SetSpeed(m_speed);
     }
 }
 

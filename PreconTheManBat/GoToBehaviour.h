@@ -10,12 +10,13 @@ namespace Precon
 
 	{
 	private:
-
+		float m_speed;
 		glm::vec2 m_targetPosition;
 
 	public:
 		void Enter(Agent* agent) override;
 		void Update(Agent* agent, float deltaTime) override;
+		void Exit(Agent* agent) override;
 	};
 }
 

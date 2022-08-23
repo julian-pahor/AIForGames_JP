@@ -33,6 +33,8 @@ namespace Precon
 
     Node* NodeMap::GetNearbyNode(Node* target)
     {
+        //uses a heuristic calculation to find nodes within range of a target;
+
         Node* targetNode = target;
         Node* node = nullptr;
 
@@ -55,6 +57,8 @@ namespace Precon
 
     Node* NodeMap::GetStartNode()
     {
+        //Picks a random node until it finds an entryNode and returns that 
+
         Node* node = nullptr;
 
         node = GetRandomNode();
@@ -71,6 +75,8 @@ namespace Precon
 
     std::vector<Node*> NodeMap::AStarSearch(Node* startNode, Node* endNode)
     {
+        //Implementation of an A* path finding algorithm
+
         std::vector<Node*> dPath;
 
         if (endNode == nullptr)
@@ -152,6 +158,8 @@ namespace Precon
 
     void NodeMap::Initialise(std::vector<std::string> asciiMap, int cellSize)
     {
+        //Intialise is used to create the NodeMap from the ascii file written in the main program
+
         m_cellSize = cellSize;
         const char emptySquare = '0';
         const char entrySquare = '2';
@@ -162,6 +170,7 @@ namespace Precon
         m_height = asciiMap.size();
         m_width = asciiMap[0].size();
 
+        //creates the array of Node* 
         m_nodes = new Node * [m_width * m_height];
 
         // loop over the strings, creating Node entries as we go
@@ -288,6 +297,7 @@ namespace Precon
 
         return GetNode(i, j);
     }
+
     float NodeMap::GetCellSize()
     {
         return m_cellSize;

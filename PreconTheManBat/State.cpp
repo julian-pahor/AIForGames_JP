@@ -35,13 +35,14 @@ namespace Precon
 
 
 	}
+
 	void State::Enter(Agent* agent)
 	{
 		m_currentBehaviour->Enter(agent);
 	}
+
 	void State::Update(Agent* agent, float deltaTime)
 	{
-
 		for (Behaviour* b : m_behaviours)
 		{
 			b->Update(agent, deltaTime);
@@ -50,6 +51,7 @@ namespace Precon
 	void State::Exit(Agent* agent)
 	{
 		m_currentBehaviour->Exit(agent);
+		//transition->condition->Exit()
 	}
 
 	std::vector<State::Transition> State::GetTransitions()

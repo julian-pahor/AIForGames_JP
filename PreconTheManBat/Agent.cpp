@@ -53,6 +53,40 @@ namespace Precon
     {
         return m_pathAgent.GetPath().empty();
     }
+    bool Agent::CheckWin()
+    {
+        Node* node;
+
+        node = m_pathAgent.GetCurrentNode();
+
+        if (node->exitNode)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    bool Agent::CheckKill()
+    {
+        Node* node;
+
+        node = m_pathAgent.GetCurrentNode();
+
+        Node* targetNode;
+
+        targetNode = m_targetAgent->GetPathAgent().GetCurrentNode();
+
+        if (node == targetNode)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        } 
+    }
     NodeMap* Agent::GetNodeMap()
     {
         return m_nodeMap;
@@ -70,6 +104,11 @@ namespace Precon
     PathAgent Agent::GetPathAgent()
     {
         return m_pathAgent;
+    }
+
+    PathAgent* Agent::GetPathAgentPointer()
+    {
+        return &m_pathAgent;
     }
 
     void Agent::ResetPath()

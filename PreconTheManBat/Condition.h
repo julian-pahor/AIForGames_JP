@@ -9,6 +9,7 @@ namespace Precon
 	{
 	public:
 		virtual bool IsTrue(Agent* agent, float deltaTime) = 0;
+		virtual void Exit(Agent* agent) {};
 	};
 }
 

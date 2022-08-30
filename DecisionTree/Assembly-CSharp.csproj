@@ -53,18 +53,21 @@
     <UnityVersion>2020.3.5f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Player.cs" />
-    <Compile Include="Assets\Boss.cs" />
-    <Compile Include="Assets\Decision.cs" />
-    <Compile Include="Assets\ABDecisionDistance.cs" />
-    <Compile Include="Assets\WeakMDecision.cs" />
-    <Compile Include="Assets\SummonDecision.cs" />
-    <Compile Include="Assets\ABDecisionHealth.cs" />
-    <Compile Include="Assets\ABCDecisionSummon.cs" />
-    <Compile Include="Assets\RushDecision.cs" />
-    <Compile Include="Assets\StrongMDecision.cs" />
-    <Compile Include="Assets\WeakRDecision.cs" />
-    <Compile Include="Assets\StrongRDecision.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\Scripts\RushDecision.cs" />
+    <Compile Include="Assets\Scripts\StrongRDecision.cs" />
+    <Compile Include="Assets\Scripts\WeakMDecision.cs" />
+    <Compile Include="Assets\Scripts\SummonDecision.cs" />
+    <Compile Include="Assets\Scripts\ABDecisionDistance.cs" />
+    <Compile Include="Assets\Scripts\Boss.cs" />
+    <Compile Include="Assets\Scripts\WeakRDecision.cs" />
+    <Compile Include="Assets\Scripts\ABCDecisionSummon.cs" />
+    <Compile Include="Assets\Scripts\StrongMDecision.cs" />
+    <Compile Include="Assets\Scripts\ABDecisionHealth.cs" />
+    <Compile Include="Assets\Scripts\Decision.cs" />
+    <Compile Include="Assets\Scripts\Minion.cs" />
+    <Compile Include="Assets\Scripts\Bullet.cs" />
+    <Compile Include="Assets\Scripts\Melee.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

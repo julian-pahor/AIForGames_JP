@@ -29,13 +29,17 @@ public class ABDecisionDistance : Decision
 
     public override void MakeDecision()
     {
-        if(Vector3.Distance(m_target.transform.position, m_parent.transform.position) < m_distance)
+        if(m_target != null)
         {
-            A.MakeDecision();
+            if (Vector3.Distance(m_target.transform.position, m_parent.transform.position) < m_distance)
+            {
+                A.MakeDecision();
+            }
+            else
+            {
+                B.MakeDecision();
+            }
         }
-        else
-        {
-            B.MakeDecision();
-        }
+        
     }
 }

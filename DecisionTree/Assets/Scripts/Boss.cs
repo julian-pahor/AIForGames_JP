@@ -138,7 +138,6 @@ public class Boss : MonoBehaviour
     {
         if(rage)
         {
-
             Vector3 movement = (target.transform.position - this.transform.position).normalized;
             Vector3 bSpawn = this.transform.position + movement * 2f;
             GameObject go = Instantiate(bullet, bSpawn, Quaternion.identity);
